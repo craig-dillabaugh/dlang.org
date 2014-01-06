@@ -713,14 +713,14 @@ struct D {
 
 void main() {
   S s;
-  s.opDispatch!("hello")(7);
-  s.foo(7);
+  s.opDispatch!("hello")(7);     //Prints: S.opDispatch('hello', 7)
+  s.foo(7);                      //Prints: S.opDispatch('foo', 7)
 
   auto c = new C();
-  c.foo(8);
+  c.foo(8);                      //Prints: C.opDispatch('foo', 8)
 
   D d;
-  writefln("d.foo = %s", d.foo);
+  writefln("d.foo = %s", d.foo); //Prints: d.foo = 8
   assert(d.foo == 8);
 }
 ---
